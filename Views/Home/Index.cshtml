@@ -1,8 +1,72 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model TiendaMVC.Models.ViewModels.HomeSummaryViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5">
+    <h1 class="display-4">Resumen de Inventario</h1>
 </div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total de productos</h5>
+                <h2 class="card-text">@Model.TotalProducts</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total de categorías</h5>
+                <h2 class="card-text">@Model.TotalCategories</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Valor del inventario</h5>
+                <h2 class="card-text">@Model.InventoryValue.ToString("C2")</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Poco inventario</h5>
+                <h2 class="card-text">@Model.LowInventoryCount</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.LowInventoryCount > 0)
+{
+    <h3>Productos con bajo inventario (Menor a 5)</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Inventario</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LowInventoryProducts)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Category?.Name</td>
+                    <td><span class="text-danger fw-bold">@item.Inventory</span></td>
+                    <td>
+                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Model.TotalProducts > 0)
+{
+    <div class="alert alert-success">¡Todo en orden! No hay productos con bajo inventario.</div>
+}

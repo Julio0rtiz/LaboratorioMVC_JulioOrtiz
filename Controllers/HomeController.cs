@@ -1,24 +1,43 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TiendaMVC.Models;
+using Microsoft.EntityFrameworkCore;
+using TiendaMVC.Data;
+using TiendaMVC.Models.ViewModels;
 
-namespace TiendaMVC.Controllers;
-
-public class HomeController : Controller
+namespace TiendaMVC.Controllers
 {
-    public IActionResult Index()
+    public class HomeController : Controller
     {
-        return View();
-    }
+        private readonly AppDbContext _context;
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public HomeController(AppDbContext context)
+        {
+            _context = context;
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Index()
+        {
+            var model = new HomeSummaryViewModel();
+
+            // Cálculos en la base de datos
+            model.TotalProducts = _context.Products.Count();
+            model.TotalCategories = _context.Categories.Count();
+            
+            // Usamos decimal? para evitar errores si la tabla está vacía
+            model.InventoryValue = _context.Products.Sum(p => (decimal?)(p.Price * p.Inventory)) ?? 0m;
+
+            var lowInventoryQuery = _context.Products
+                .Include(p => p.Category)
+                .Where(p => p.Inventory < 5);
+
+            model.LowInventoryCount = lowInventoryQuery.Count();
+            
+            // Ordenado por inventario
+            model.LowInventoryProducts = lowInventoryQuery
+                .OrderBy(p => p.Inventory)
+                .ThenBy(p => p.Name)
+                .ToList();
+
+            return View(model);
+        }
     }
 }

@@ -1,27 +1,25 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace TiendaMVC.Models.VirewModels
+namespace TiendaMVC.Models.ViewModels
 {
     public class ProductFormViewModel
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "El nombre del producto es obligatorio.")]
-        public string Name { get; set; } = "";
+        [Required(ErrorMessage = "El nombre es obligatorio")]
+        public string Name { get; set; } = null!;
 
-        [Required(ErrorMessage = "El precio del producto es obligatorio.")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser mayor que cero.")]
+        [Range(0.01, 10000, ErrorMessage = "El precio debe ser mayor a 0")]
         public decimal Price { get; set; }
 
-        [Range(0,100000,ErrorMessage = "El inventario debe estar entre 0 y 100000.")]
-        public int Stock { get; set; }
+        [Range(0, 10000, ErrorMessage = "El inventario no puede ser negativo")]
+        public int Inventory { get; set; }
 
-        [Required(ErrorMessage = "Seleccione una categoría")]
-        [Display(Name = "Categoría")]
-        public int? CategoryId { get; set; }
+        [Required(ErrorMessage = "Debe seleccionar una categoría")]
+        public int CategoryId { get; set; }
 
-        [ValidateNever]
-        public IEnumerable<Category> Categories { get; set; } = new List<Category>();
+        // Nuevo campo agregado
+        [MaxLength(200, ErrorMessage = "La descripción no puede superar los 200 caracteres.")]
+        public string? Description { get; set; }
     }
 }
