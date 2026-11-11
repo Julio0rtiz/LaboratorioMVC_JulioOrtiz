@@ -1,0 +1,10 @@
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.csproj.AssemblyReference.cache
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.AssemblyInfoInputs.cache
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.AssemblyInfo.cs
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.csproj.CoreCompileInputs.cache
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.RazorAssemblyInfo.cache
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.RazorAssemblyInfo.cs
+C:\Users\Julio\OneDrive\Documentos\GitHub\LaboratorioMVC_JulioOrtiz\obj\Debug\net10.0\TiendaMVC.sourcelink.json

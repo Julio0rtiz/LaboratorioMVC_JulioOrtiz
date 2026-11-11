@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TiendaMVC.Data;
+using TiendaMvc.Data;
 using TiendaMVC.Models;
 using TiendaMVC.Models.ViewModels;
 

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TiendaMVC.Data;
+using TiendaMvc.Data;
 using TiendaMVC.Models.ViewModels;
 
 namespace TiendaMVC.Controllers
